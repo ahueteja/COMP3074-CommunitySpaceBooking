@@ -1,58 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/app_background"
     android:padding="16dp">
 
-    <TextView
-        style="@style/AppScreenTitle"
+    <!-- Header -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Community Spaces" />
+        android:orientation="vertical"
+        android:paddingTop="16dp"
+        android:paddingBottom="20dp">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="COMMUNITY SPACE BOOKING"
+            android:textColor="@color/app_primary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Find your space"
+            android:textColor="@color/app_heading"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Explore facilities in your community"
+            android:textColor="@color/app_muted"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <!-- Search -->
     <EditText
         android:id="@+id/searchFacilities"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Search facilities"
+        android:layout_height="52dp"
+        android:background="@drawable/bg_app_input"
+        android:hint="Search facilities..."
         android:inputType="text"
-        android:padding="12dp" />
+        android:singleLine="true"
+        android:padding="12dp"
+        android:textColor="@color/app_heading"
+        android:textColorHint="@color/app_muted" />
 
+    <!-- Facility heading -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:layout_marginBottom="12dp"
+        android:text="Available spaces"
+        android:textColor="@color/app_heading"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <!-- Facility list -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerFacilities"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:clipToPadding="false"
-        android:paddingTop="12dp" />
+        android:paddingBottom="12dp" />
 
+    <!-- Bottom navigation -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@drawable/bg_facility_card"
+        android:padding="8dp">
 
-        <Button
+        <TextView
             android:id="@+id/btnHome"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:text="Home" />
+            android:gravity="center"
+            android:text="⌂&#10;Home"
+            android:textColor="@color/app_primary"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground" />
 
-        <Button
+        <TextView
             android:id="@+id/btnBookings"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:text="Bookings" />
+            android:gravity="center"
+            android:text="▦&#10;Bookings"
+            android:textColor="@color/app_muted"
+            android:textSize="15sp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground" />
 
-        <Button
+        <TextView
             android:id="@+id/btnAbout"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:text="About" />
+            android:gravity="center"
+            android:text="ⓘ&#10;About"
+            android:textColor="@color/app_muted"
+            android:textSize="15sp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground" />
 
     </LinearLayout>
 

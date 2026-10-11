@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="app_primary">#5557A6</color>
+    <color name="app_primary_dark">#353875</color>
+    <color name="app_background">#F5F6FA</color>
+    <color name="app_surface">#FFFFFF</color>
+    <color name="app_heading">#1D2440</color>
+    <color name="app_text">#41495C</color>
+    <color name="app_muted">#737C90</color>
+    <color name="app_border">#E1E5EF</color>
+    <color name="app_soft_purple">#ECEEFA</color>
+    <color name="app_success">#28775C</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

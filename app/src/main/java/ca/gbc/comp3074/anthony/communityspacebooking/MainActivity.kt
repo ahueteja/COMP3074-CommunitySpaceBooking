@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Set up facility list
         val recyclerView =
             findViewById<RecyclerView>(R.id.recyclerFacilities)
 
@@ -44,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
-        // Search facilities
+        // Facility search
         findViewById<EditText>(R.id.searchFacilities)
             .addTextChangedListener(object : TextWatcher {
 
@@ -75,13 +76,13 @@ class MainActivity : AppCompatActivity() {
             })
 
         // Home navigation
-        findViewById<Button>(R.id.btnHome)
+        findViewById<TextView>(R.id.btnHome)
             .setOnClickListener {
                 recyclerView.smoothScrollToPosition(0)
             }
 
         // My Bookings navigation
-        findViewById<Button>(R.id.btnBookings)
+        findViewById<TextView>(R.id.btnBookings)
             .setOnClickListener {
                 startActivity(
                     Intent(this, MyBookingsActivity::class.java)
@@ -89,7 +90,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         // About navigation
-        findViewById<Button>(R.id.btnAbout)
+        findViewById<TextView>(R.id.btnAbout)
             .setOnClickListener {
                 startActivity(
                     Intent(this, AboutActivity::class.java)
@@ -102,6 +103,7 @@ class MainActivity : AppCompatActivity() {
             this,
             FacilityDetailsActivity::class.java
         )
+
         intent.putExtra("facilityName", name)
         startActivity(intent)
     }
