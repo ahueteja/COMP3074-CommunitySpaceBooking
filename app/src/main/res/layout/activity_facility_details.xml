@@ -11,63 +11,56 @@
         android:padding="20dp">
 
         <TextView
+            style="@style/AppScreenTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="16dp"
-            android:text="Facility Details"
-            android:textSize="26sp"
-            android:textStyle="bold" />
+            android:text="Facility Details" />
 
         <TextView
             android:id="@+id/txtFacilityName"
+            style="@style/AppSectionTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:text="Community Hall"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:text="Community Hall" />
 
         <TextView
             android:id="@+id/txtCapacity"
+            style="@style/AppBodyText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:text="Capacity: 150 people"
-            android:textSize="18sp" />
+            android:text="Capacity: 150 people" />
 
         <TextView
             android:id="@+id/txtLocation"
+            style="@style/AppBodyText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:text="Location: Main community complex"
-            android:textSize="18sp" />
+            android:text="Location: Main community complex" />
 
         <TextView
             android:id="@+id/txtDescription"
+            style="@style/AppBodyText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:text="Large multi-purpose space for meetings and community events."
-            android:textSize="16sp" />
+            android:text="Large multi-purpose space for meetings and community events." />
 
         <TextView
             android:id="@+id/txtHours"
+            style="@style/AppBodyText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:text="Sample hours: 8:00 AM - 10:00 PM"
-            android:textSize="16sp" />
+            android:text="Sample hours: 8:00 AM - 10:00 PM" />
 
         <Button
             android:id="@+id/btnBookSpace"
+            style="@style/AppPrimaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Book This Space" />
 
         <Button
             android:id="@+id/btnBack"
+            style="@style/AppPrimaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Back to Facilities" />

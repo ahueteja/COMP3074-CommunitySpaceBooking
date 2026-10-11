@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,30 +12,42 @@
         android:padding="20dp">
 
         <TextView
+            style="@style/AppScreenTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Booking Details"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:padding="16dp" />
+            android:text="Booking Details" />
+
+        <TextView
+            style="@style/AppBodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Review the information and status of your selected booking." />
 
         <TextView
             android:id="@+id/txtBookingInformation"
+            style="@style/AppBodyText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Booking information"
-            android:textSize="18sp"
-            android:padding="16dp" />
+            android:padding="20dp"
+            android:text="Booking information will appear here."
+            android:textSize="18sp" />
+
+        <TextView
+            style="@style/AppBodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Prototype 1: Cancellation is a demonstration only. No saved booking will be changed." />
 
         <Button
             android:id="@+id/btnCancelSelectedBooking"
+            style="@style/AppPrimaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cancel Booking (Prototype)" />
 
         <Button
             android:id="@+id/btnBackToBookings"
+            style="@style/AppPrimaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Back to My Bookings" />

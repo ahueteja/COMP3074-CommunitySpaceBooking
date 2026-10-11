@@ -6,13 +6,11 @@
     android:padding="16dp">
 
     <TextView
+        style="@style/AppScreenTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="16dp"
-        android:text="Community Spaces"
-        android:textSize="26sp"
-        android:textStyle="bold" />
+        android:text="Community Spaces" />
+
 
     <EditText
         android:id="@+id/searchFacilities"

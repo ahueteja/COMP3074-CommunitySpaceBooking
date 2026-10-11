@@ -11,36 +11,47 @@
         android:padding="20dp">
 
         <TextView
+            style="@style/AppScreenTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Create Booking"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:padding="16dp" />
+            android:text="Create Booking" />
 
         <TextView
             android:id="@+id/txtSelectedFacility"
+            style="@style/AppSectionTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Facility: Community Hall"
-            android:textSize="20sp"
-            android:padding="12dp" />
+            android:text="Facility: Community Hall" />
+
+        <TextView
+            style="@style/AppBodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Booking Date" />
 
         <Button
             android:id="@+id/btnSelectDate"
+            style="@style/AppPrimaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Select Booking Date" />
 
+        <TextView
+            style="@style/AppBodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Booking Time" />
+
         <Button
             android:id="@+id/btnStartTime"
+            style="@style/AppPrimaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Select Start Time" />
 
         <Button
             android:id="@+id/btnEndTime"
+            style="@style/AppPrimaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Select End Time" />
@@ -51,6 +62,7 @@
             android:layout_height="wrap_content"
             android:hint="Number of attendees"
             android:inputType="number"
+            android:minHeight="48dp"
             android:padding="12dp" />
 
         <EditText
@@ -65,12 +77,14 @@
 
         <Button
             android:id="@+id/btnSubmitBooking"
+            style="@style/AppPrimaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Submit Booking" />
 
         <Button
             android:id="@+id/btnCancelBooking"
+            style="@style/AppPrimaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Back to Facility" />

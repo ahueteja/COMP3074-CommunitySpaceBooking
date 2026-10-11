@@ -7,32 +7,42 @@
     android:padding="20dp">
 
     <TextView
+        style="@style/AppScreenTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="My Bookings"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:padding="16dp" />
+        android:text="My Bookings" />
 
     <TextView
+        style="@style/AppBodyText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Your booking requests"
-        android:textSize="16sp"
-        android:paddingBottom="20dp" />
+        android:text="View your community facility booking requests." />
+
+    <TextView
+        style="@style/AppSectionTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sample Bookings" />
+
+    <TextView
+        style="@style/AppBodyText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="These are demonstration bookings for Prototype 1. They are not saved reservations." />
 
     <Button
         android:id="@+id/btnBookingOne"
+        style="@style/AppPrimaryButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SAMPLE - Community Hall - Pending" />
+        android:text="Community Hall - Pending" />
 
     <Button
         android:id="@+id/btnBookingTwo"
+        style="@style/AppPrimaryButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SAMPLE - Meeting Room - Pending" />
+        android:text="Meeting Room - Pending" />
 
     <Space
         android:layout_width="match_parent"
@@ -41,6 +51,7 @@
 
     <Button
         android:id="@+id/btnBackHome"
+        style="@style/AppPrimaryButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Back to Home" />
