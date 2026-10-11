@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -8,81 +9,77 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="20dp">
 
         <TextView
+            style="@style/AppScreenTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="16dp"
-            android:text="About"
-            android:textSize="28sp"
-            android:textStyle="bold" />
+            android:text="About" />
 
         <TextView
+            style="@style/AppSectionTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="12dp"
-            android:text="Community Space Booking App"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:text="Community Space Booking App" />
 
         <TextView
+            style="@style/AppBodyText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:text="This Android application helps community members browse shared facilities, review facility information, and create booking requests."
-            android:textSize="16sp" />
+            android:text="This application helps community members browse shared facilities, view facility information, and create booking requests." />
 
         <TextView
+            style="@style/AppSectionTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:text="COMP3074 - Mobile Application Development I"
-            android:textSize="16sp" />
+            android:text="Course Information" />
 
         <TextView
+            style="@style/AppBodyText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:text="George Brown College"
-            android:textSize="16sp" />
+            android:text="COMP3074 - Mobile Application Development I" />
 
         <TextView
+            style="@style/AppBodyText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:text="Group: P 51"
-            android:textSize="16sp" />
+            android:text="George Brown College" />
 
         <TextView
+            style="@style/AppBodyText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:text="Developer: Anthony Huete-Jacobs"
-            android:textSize="16sp" />
+            android:text="Group: P 51" />
 
         <TextView
+            style="@style/AppSectionTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:text="Student ID: 101570138"
-            android:textSize="16sp" />
+            android:text="Developer Information" />
 
         <TextView
+            style="@style/AppBodyText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:text="Version: 1.0 - UI Prototype"
-            android:textSize="16sp" />
+            android:text="Anthony Huete-Jacobs" />
 
-        <Space
+        <TextView
+            style="@style/AppBodyText"
             android:layout_width="match_parent"
-            android:layout_height="24dp" />
+            android:layout_height="wrap_content"
+            android:text="Student ID: 101570138" />
+
+        <TextView
+            style="@style/AppBodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Version 1.0 - UI Prototype" />
 
         <Button
             android:id="@+id/btnAboutBack"
+            style="@style/AppPrimaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Back to Home" />
