@@ -1,45 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app_background"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="16dp">
 
         <TextView
-            style="@style/AppScreenTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Booking Request Confirmed" />
+            android:layout_marginTop="20dp"
+            android:text="Booking Confirmation"
+            android:textColor="@color/app_heading"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <TextView
-            style="@style/AppBodyText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Your booking request has been validated. This is a prototype, so no booking has been saved." />
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="24dp"
+            android:text="Your booking request has been validated"
+            android:textColor="@color/app_muted"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_facility_card"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Request Summary"
+                android:textColor="@color/app_heading"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtConfirmationDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Your booking information will appear here."
+                android:textColor="@color/app_text"
+                android:textSize="16sp"
+                android:lineSpacingExtra="5dp" />
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/txtConfirmationDetails"
-            style="@style/AppBodyText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:text="Booking details will appear here."
-            android:textSize="18sp" />
+            android:layout_marginTop="16dp"
+            android:text="Prototype 1: This request has not been permanently saved or sent to a facility administrator."
+            android:textColor="@color/app_muted"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/btnConfirmationHome"
             style="@style/AppPrimaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="Return to Home" />
 
     </LinearLayout>
-
 </ScrollView>

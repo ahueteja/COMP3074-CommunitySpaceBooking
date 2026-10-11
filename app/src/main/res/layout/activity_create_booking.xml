@@ -1,85 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app_background"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="16dp">
 
         <TextView
-            style="@style/AppScreenTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Create Booking" />
+            android:layout_marginTop="20dp"
+            android:text="Create Booking"
+            android:textColor="@color/app_heading"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txtSelectedFacility"
-            style="@style/AppSectionTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Facility: Community Hall" />
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="24dp"
+            android:text="Request a space for your community event"
+            android:textColor="@color/app_muted"
+            android:textSize="14sp" />
 
-        <TextView
-            style="@style/AppBodyText"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Booking Date" />
+            android:background="@drawable/bg_facility_card"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <Button
-            android:id="@+id/btnSelectDate"
-            style="@style/AppPrimaryButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Select Booking Date" />
+            <TextView
+                android:id="@+id/txtSelectedFacility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Facility: Community Hall"
+                android:textColor="@color/app_heading"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:paddingBottom="16dp" />
 
-        <TextView
-            style="@style/AppBodyText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Booking Time" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Booking Date"
+                android:textColor="@color/app_heading"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btnStartTime"
-            style="@style/AppPrimaryButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Select Start Time" />
+            <Button
+                android:id="@+id/btnSelectDate"
+                style="@style/AppPrimaryButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select Booking Date" />
 
-        <Button
-            android:id="@+id/btnEndTime"
-            style="@style/AppPrimaryButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Select End Time" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Start Time"
+                android:textColor="@color/app_heading"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/edtAttendees"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Number of attendees"
-            android:inputType="number"
-            android:minHeight="48dp"
-            android:padding="12dp" />
+            <Button
+                android:id="@+id/btnStartTime"
+                style="@style/AppPrimaryButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select Start Time" />
 
-        <EditText
-            android:id="@+id/edtPurpose"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Purpose / Notes"
-            android:inputType="textMultiLine"
-            android:minLines="3"
-            android:gravity="top"
-            android:padding="12dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="End Time"
+                android:textColor="@color/app_heading"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnEndTime"
+                style="@style/AppPrimaryButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select End Time" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Number of Attendees"
+                android:textColor="@color/app_heading"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edtAttendees"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_app_input"
+                android:hint="Enter number of attendees"
+                android:inputType="number"
+                android:padding="12dp"
+                android:textColor="@color/app_heading"
+                android:textColorHint="@color/app_muted" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Purpose / Notes"
+                android:textColor="@color/app_heading"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edtPurpose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:minHeight="100dp"
+                android:background="@drawable/bg_app_input"
+                android:gravity="top"
+                android:hint="e.g., Youth meeting"
+                android:inputType="textMultiLine"
+                android:padding="12dp"
+                android:textColor="@color/app_heading"
+                android:textColorHint="@color/app_muted" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnSubmitBooking"
             style="@style/AppPrimaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="Submit Booking" />
 
         <Button

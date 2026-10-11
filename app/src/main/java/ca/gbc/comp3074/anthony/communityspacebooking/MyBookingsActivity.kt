@@ -1,9 +1,9 @@
-
 package ca.gbc.comp3074.anthony.communityspacebooking
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class MyBookingsActivity : AppCompatActivity() {
@@ -12,19 +12,16 @@ class MyBookingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_bookings)
 
-        // Open Community Hall booking details
-        findViewById<Button>(R.id.btnBookingOne)
+        findViewById<TextView>(R.id.btnBookingOne)
             .setOnClickListener {
                 openBooking("Community Hall")
             }
 
-        // Open Meeting Room booking details
-        findViewById<Button>(R.id.btnBookingTwo)
+        findViewById<TextView>(R.id.btnBookingTwo)
             .setOnClickListener {
                 openBooking("Meeting Room")
             }
 
-        // Return to Home screen
         findViewById<Button>(R.id.btnBackHome)
             .setOnClickListener {
                 val intent = Intent(
@@ -42,7 +39,6 @@ class MyBookingsActivity : AppCompatActivity() {
             }
     }
 
-    // Navigate to selected booking details
     private fun openBooking(facilityName: String) {
         val intent = Intent(
             this,
