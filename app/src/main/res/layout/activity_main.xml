@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Community Spaces"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="16dp" />
+
+    <EditText
+        android:id="@+id/searchFacilities"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Search facilities"
+        android:inputType="text"
+        android:padding="12dp" />
+
+    <Button
+        android:id="@+id/btnCommunityHall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Community Hall - Capacity 150" />
+
+    <Button
+        android:id="@+id/btnMeetingRoom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Meeting Room - Capacity 20" />
+
+    <Button
+        android:id="@+id/btnGymnasium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gymnasium - Capacity 80" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnHome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Home" />
+
+        <Button
+            android:id="@+id/btnBookings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Bookings" />
+
+        <Button
+            android:id="@+id/btnAbout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="About" />
+
+    </LinearLayout>
+
+</LinearLayout>
