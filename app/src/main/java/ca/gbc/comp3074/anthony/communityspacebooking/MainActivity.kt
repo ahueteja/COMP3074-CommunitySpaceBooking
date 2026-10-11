@@ -2,57 +2,98 @@ package ca.gbc.comp3074.anthony.communityspacebooking
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Button
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
+
+    private val facilities = listOf(
+        Facility(
+            "Community Hall",
+            "Community events and gatherings",
+            150
+        ),
+        Facility(
+            "Meeting Room",
+            "Meetings and workshops",
+            20
+        ),
+        Facility(
+            "Gymnasium",
+            "Sports and recreation",
+            80
+        )
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Community Hall
-        findViewById<Button>(R.id.btnCommunityHall)
-            .setOnClickListener {
-                openFacility("Community Hall")
-            }
+        val recyclerView =
+            findViewById<RecyclerView>(R.id.recyclerFacilities)
 
-        // Meeting Room
-        findViewById<Button>(R.id.btnMeetingRoom)
-            .setOnClickListener {
-                openFacility("Meeting Room")
-            }
+        val adapter = FacilityAdapter(facilities) { facility ->
+            openFacility(facility.name)
+        }
 
-        // Gymnasium
-        findViewById<Button>(R.id.btnGymnasium)
-            .setOnClickListener {
-                openFacility("Gymnasium")
-            }
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
 
-        // Home button
+        // Search facilities
+        findViewById<EditText>(R.id.searchFacilities)
+            .addTextChangedListener(object : TextWatcher {
+
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {}
+
+                override fun onTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    before: Int,
+                    count: Int
+                ) {
+                    val query = s.toString().trim()
+
+                    val filtered = facilities.filter {
+                        it.name.contains(query, ignoreCase = true) ||
+                                it.description.contains(query, ignoreCase = true)
+                    }
+
+                    adapter.updateFacilities(filtered)
+                }
+
+                override fun afterTextChanged(s: Editable?) {}
+            })
+
+        // Home navigation
         findViewById<Button>(R.id.btnHome)
             .setOnClickListener {
-                // Already on Home screen
+                recyclerView.smoothScrollToPosition(0)
             }
 
-        // My Bookings
+        // My Bookings navigation
         findViewById<Button>(R.id.btnBookings)
             .setOnClickListener {
-                val intent = Intent(
-                    this,
-                    MyBookingsActivity::class.java
+                startActivity(
+                    Intent(this, MyBookingsActivity::class.java)
                 )
-                startActivity(intent)
             }
 
-        // About screen
+        // About navigation
         findViewById<Button>(R.id.btnAbout)
             .setOnClickListener {
-                val intent = Intent(
-                    this,
-                    AboutActivity::class.java
+                startActivity(
+                    Intent(this, AboutActivity::class.java)
                 )
-                startActivity(intent)
             }
     }
 
@@ -61,7 +102,6 @@ class MainActivity : AppCompatActivity() {
             this,
             FacilityDetailsActivity::class.java
         )
-
         intent.putExtra("facilityName", name)
         startActivity(intent)
     }
