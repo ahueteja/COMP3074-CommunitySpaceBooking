@@ -1,7 +1,7 @@
 package ca.gbc.comp3074.anthony.communityspacebooking
-
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -16,6 +16,8 @@ class CreateBookingActivity : AppCompatActivity() {
     private var selectedDate = ""
     private var startMinutes: Int? = null
     private var endMinutes: Int? = null
+    private var selectedStartTime = ""
+    private var selectedEndTime = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,9 +60,11 @@ class CreateBookingActivity : AppCompatActivity() {
             dialog.show()
         }
 
+
         startButton.setOnClickListener {
             showTimePicker { minutes, label ->
                 startMinutes = minutes
+                selectedStartTime = label
                 startButton.text = "Start: $label"
             }
         }
@@ -68,6 +72,7 @@ class CreateBookingActivity : AppCompatActivity() {
         endButton.setOnClickListener {
             showTimePicker { minutes, label ->
                 endMinutes = minutes
+                selectedEndTime = label
                 endButton.text = "End: $label"
             }
         }
@@ -102,8 +107,22 @@ class CreateBookingActivity : AppCompatActivity() {
                     }
 
                     else -> {
-                        showMessage("Booking request validated!")
+                        val confirmationIntent = Intent(
+                            this,
+                            BookingConfirmationActivity::class.java
+                        )
+
+                        confirmationIntent.putExtra("facilityName", facility)
+                        confirmationIntent.putExtra("bookingDate", selectedDate)
+                        confirmationIntent.putExtra("startTime", selectedStartTime)
+                        confirmationIntent.putExtra("endTime", selectedEndTime)
+                        confirmationIntent.putExtra("attendees", attendeeCount)
+                        confirmationIntent.putExtra("purpose", bookingPurpose)
+
+                        startActivity(confirmationIntent)
+                        finish()
                     }
+
                 }
             }
 
