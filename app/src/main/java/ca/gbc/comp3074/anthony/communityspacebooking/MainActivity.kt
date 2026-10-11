@@ -26,7 +26,19 @@ class MainActivity : AppCompatActivity() {
             .setOnClickListener {
                 openFacility("Gymnasium")
             }
+
+        findViewById<Button>(R.id.btnBookings)
+            .setOnClickListener {
+                val intent = Intent(
+                    this,
+                    MyBookingsActivity::class.java
+                )
+                startActivity(intent)
+            }
+
     }
+
+
 
     private fun openFacility(name: String) {
         val intent = Intent(this, FacilityDetailsActivity::class.java)

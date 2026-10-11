@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My Bookings"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your booking requests"
+        android:textSize="16sp"
+        android:paddingBottom="20dp" />
+
+    <Button
+        android:id="@+id/btnBookingOne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SAMPLE - Community Hall - Pending" />
+
+    <Button
+        android:id="@+id/btnBookingTwo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SAMPLE - Meeting Room - Pending" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/btnBackHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back to Home" />
+
+</LinearLayout>
