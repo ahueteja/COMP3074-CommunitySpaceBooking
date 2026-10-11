@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create Booking"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="16dp" />
+
+        <TextView
+            android:id="@+id/txtSelectedFacility"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Facility: Community Hall"
+            android:textSize="20sp"
+            android:padding="12dp" />
+
+        <Button
+            android:id="@+id/btnSelectDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Booking Date" />
+
+        <Button
+            android:id="@+id/btnStartTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Start Time" />
+
+        <Button
+            android:id="@+id/btnEndTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select End Time" />
+
+        <EditText
+            android:id="@+id/edtAttendees"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Number of attendees"
+            android:inputType="number"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/edtPurpose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Purpose / Notes"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:gravity="top"
+            android:padding="12dp" />
+
+        <Button
+            android:id="@+id/btnSubmitBooking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit Booking" />
+
+        <Button
+            android:id="@+id/btnCancelBooking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back to Facility" />
+
+    </LinearLayout>
+</ScrollView>

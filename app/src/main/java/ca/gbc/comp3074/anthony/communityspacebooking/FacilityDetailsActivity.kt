@@ -52,13 +52,14 @@ class FacilityDetailsActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnBack).setOnClickListener {
             finish()
         }
-
         findViewById<Button>(R.id.btnBookSpace).setOnClickListener {
-            Toast.makeText(
+            val intent = android.content.Intent(
                 this,
-                "Booking form coming next!",
-                Toast.LENGTH_SHORT
-            ).show()
+                CreateBookingActivity::class.java
+            )
+            intent.putExtra("facilityName", facilityName)
+            startActivity(intent)
         }
+
     }
 }
