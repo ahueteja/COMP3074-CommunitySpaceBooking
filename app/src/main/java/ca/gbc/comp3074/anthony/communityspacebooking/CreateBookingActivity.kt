@@ -12,6 +12,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import ca.gbc.comp3074.anthony.communityspacebooking.data.AppDatabase
+import ca.gbc.comp3074.anthony.communityspacebooking.data.Booking
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.Calendar
 import java.util.Locale
 
@@ -36,11 +42,11 @@ class CreateBookingActivity : AppCompatActivity() {
         val dateButton = findViewById<Button>(R.id.btnSelectDate)
         val startButton = findViewById<Button>(R.id.btnStartTime)
         val endButton = findViewById<Button>(R.id.btnEndTime)
-
         val attendees = findViewById<EditText>(R.id.edtAttendees)
         val purpose = findViewById<EditText>(R.id.edtPurpose)
+        val submitButton = findViewById<Button>(R.id.btnSubmitBooking)
 
-        // Select booking date
+        // Date picker
         dateButton.setOnClickListener {
             val calendar = Calendar.getInstance()
 
@@ -54,7 +60,6 @@ class CreateBookingActivity : AppCompatActivity() {
                         month + 1,
                         day
                     )
-
                     dateButton.text = selectedDate
                 },
                 calendar.get(Calendar.YEAR),
@@ -62,13 +67,11 @@ class CreateBookingActivity : AppCompatActivity() {
                 calendar.get(Calendar.DAY_OF_MONTH)
             )
 
-            dialog.datePicker.minDate =
-                System.currentTimeMillis() - 1000
-
+            dialog.datePicker.minDate = System.currentTimeMillis() - 1000
             dialog.show()
         }
 
-        // Select start time
+        // Start time picker
         startButton.setOnClickListener {
             showSpinnerTimePicker("Select Start Time") { minutes, label ->
                 startMinutes = minutes
@@ -77,7 +80,7 @@ class CreateBookingActivity : AppCompatActivity() {
             }
         }
 
-        // Select end time
+        // End time picker
         endButton.setOnClickListener {
             showSpinnerTimePicker("Select End Time") { minutes, label ->
                 endMinutes = minutes
@@ -86,76 +89,87 @@ class CreateBookingActivity : AppCompatActivity() {
             }
         }
 
-        // Submit booking
-        findViewById<Button>(R.id.btnSubmitBooking)
-            .setOnClickListener {
+        // Validate and save booking
+        submitButton.setOnClickListener {
+            val attendeeCount = attendees.text.toString().toIntOrNull()
+            val bookingPurpose = purpose.text.toString().trim()
 
-                val attendeeCount =
-                    attendees.text.toString().toIntOrNull()
+            when {
+                selectedDate.isEmpty() -> {
+                    showMessage("Please select a booking date")
+                }
 
-                val bookingPurpose =
-                    purpose.text.toString().trim()
+                startMinutes == null || endMinutes == null -> {
+                    showMessage("Please select start and end times")
+                }
 
-                when {
-                    selectedDate.isEmpty() -> {
-                        showMessage("Please select a booking date")
-                    }
+                endMinutes!! <= startMinutes!! -> {
+                    showMessage("End time must be after start time")
+                }
 
-                    startMinutes == null || endMinutes == null -> {
-                        showMessage("Please select start and end times")
-                    }
+                attendeeCount == null || attendeeCount <= 0 -> {
+                    attendees.error = "Enter a valid number"
+                }
 
-                    endMinutes!! <= startMinutes!! -> {
-                        showMessage("End time must be after start time")
-                    }
+                bookingPurpose.isEmpty() -> {
+                    purpose.error = "Please enter a purpose"
+                }
 
-                    attendeeCount == null || attendeeCount <= 0 -> {
-                        attendees.error = "Enter a valid number"
-                    }
+                else -> {
+                    submitButton.isEnabled = false
 
-                    bookingPurpose.isEmpty() -> {
-                        purpose.error = "Please enter a purpose"
-                    }
+                    val booking = Booking(
+                        facilityName = facility,
+                        bookingDate = selectedDate,
+                        startTime = selectedStartTime,
+                        endTime = selectedEndTime,
+                        attendees = attendeeCount,
+                        purpose = bookingPurpose
+                    )
 
-                    else -> {
-                        val confirmationIntent = Intent(
-                            this,
-                            BookingConfirmationActivity::class.java
-                        )
+                    lifecycleScope.launch {
+                        try {
+                            withContext(Dispatchers.IO) {
+                                val database = AppDatabase.getDatabase(
+                                    applicationContext
+                                )
+                                database.bookingDao().insertBooking(booking)
+                            }
 
-                        confirmationIntent.putExtra(
-                            "facilityName", facility
-                        )
-                        confirmationIntent.putExtra(
-                            "bookingDate", selectedDate
-                        )
-                        confirmationIntent.putExtra(
-                            "startTime", selectedStartTime
-                        )
-                        confirmationIntent.putExtra(
-                            "endTime", selectedEndTime
-                        )
-                        confirmationIntent.putExtra(
-                            "attendees", attendeeCount
-                        )
-                        confirmationIntent.putExtra(
-                            "purpose", bookingPurpose
-                        )
+                            val confirmationIntent = Intent(
+                                this@CreateBookingActivity,
+                                BookingConfirmationActivity::class.java
+                            ).apply {
+                                putExtra("facilityName", booking.facilityName)
+                                putExtra("bookingDate", booking.bookingDate)
+                                putExtra("startTime", booking.startTime)
+                                putExtra("endTime", booking.endTime)
+                                putExtra("attendees", booking.attendees)
+                                putExtra("purpose", booking.purpose)
+                            }
 
-                        startActivity(confirmationIntent)
-                        finish()
+                            startActivity(confirmationIntent)
+                            finish()
+
+                        } catch (e: Exception) {
+                            submitButton.isEnabled = true
+                            showMessage(
+                                "Unable to save booking. Please try again."
+                            )
+                        }
                     }
                 }
             }
+        }
 
-        // Return to facility details
+        // Cancel and return to previous screen
         findViewById<Button>(R.id.btnCancelBooking)
             .setOnClickListener {
                 finish()
             }
     }
 
-    // Scrolling time picker: Hour / Minute / AM-PM
+    // AM/PM scrolling time picker
     private fun showSpinnerTimePicker(
         title: String,
         onSelected: (Int, String) -> Unit
@@ -166,18 +180,16 @@ class CreateBookingActivity : AppCompatActivity() {
         val hourPicker = NumberPicker(this).apply {
             minValue = 1
             maxValue = 12
-            value = if (currentHour % 12 == 0) {
-                12
-            } else {
-                currentHour % 12
-            }
+            value = if (currentHour % 12 == 0) 12 else currentHour % 12
             wrapSelectorWheel = true
         }
 
         val minutePicker = NumberPicker(this).apply {
             minValue = 0
             maxValue = 59
-            setFormatter { String.format(Locale.US, "%02d", it) }
+            setFormatter {
+                String.format(Locale.US, "%02d", it)
+            }
             value = now.get(Calendar.MINUTE)
             wrapSelectorWheel = true
         }
@@ -196,13 +208,14 @@ class CreateBookingActivity : AppCompatActivity() {
             gravity = android.view.Gravity.CENTER
         }
 
-        val pickerParams = LinearLayout.LayoutParams(
-            0,
-            ViewGroup.LayoutParams.WRAP_CONTENT,
-            1f
+        pickerLayout.addView(
+            hourPicker,
+            LinearLayout.LayoutParams(
+                0,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                1f
+            )
         )
-
-        pickerLayout.addView(hourPicker, pickerParams)
 
         pickerLayout.addView(
             minutePicker,
@@ -226,14 +239,11 @@ class CreateBookingActivity : AppCompatActivity() {
             .setTitle(title)
             .setView(pickerLayout)
             .setPositiveButton("OK") { _, _ ->
-
                 val hour12 = hourPicker.value
                 val minute = minutePicker.value
                 val isPm = amPmPicker.value == 1
 
-                val hour24 = (hour12 % 12) +
-                        if (isPm) 12 else 0
-
+                val hour24 = (hour12 % 12) + if (isPm) 12 else 0
                 val totalMinutes = hour24 * 60 + minute
 
                 val formattedTime = String.format(

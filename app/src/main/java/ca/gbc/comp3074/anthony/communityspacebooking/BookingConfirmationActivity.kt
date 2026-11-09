@@ -21,6 +21,8 @@ class BookingConfirmationActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.txtConfirmationDetails).text =
             """
+            Booking Submitted Successfully!
+
             Facility: $facility
 
             Date: $date
@@ -32,17 +34,24 @@ class BookingConfirmationActivity : AppCompatActivity() {
 
             Purpose: $purpose
 
-            Status: Prototype only — not saved
+            Status: Pending
+
+            Your booking has been saved.
             """.trimIndent()
 
         findViewById<Button>(R.id.btnConfirmationHome)
             .setOnClickListener {
-                val intent = Intent(this, MainActivity::class.java)
-                intent.addFlags(
+                val homeIntent = Intent(
+                    this,
+                    MainActivity::class.java
+                )
+
+                homeIntent.addFlags(
                     Intent.FLAG_ACTIVITY_CLEAR_TOP or
                             Intent.FLAG_ACTIVITY_SINGLE_TOP
                 )
-                startActivity(intent)
+
+                startActivity(homeIntent)
                 finish()
             }
     }
